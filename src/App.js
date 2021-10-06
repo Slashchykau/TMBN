@@ -9,6 +9,7 @@ const App = () => {
       <Header />
       <Nav />
       <Profile />
+      <div>asdas</div>
     </div>
 
   );
