@@ -1,0 +1,12 @@
+
+.back {
+    width : 100%;
+    height: 100px;
+}
+.avatar {
+    width: 320px;
+    height: 320px;
+}
+.descriptionBlock {
+    padding: 10px;
+}

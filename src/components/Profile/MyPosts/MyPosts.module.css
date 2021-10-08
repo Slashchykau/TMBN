@@ -1,4 +1,13 @@
+.postsWrapper {
+margin-bottom: 40px;
+}
 
-.item {
-  color: green;
+.posts {
+    padding: 10px;
+}
+
+.btn {
+    width: 90px;
+    height: 30px;
+    margin-left: 40px;
 }
