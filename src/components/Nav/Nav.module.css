@@ -1,16 +1,17 @@
 .navbar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-   grid-area: n;
-   background-color: burlywood;
-  
-  }
-  .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-area: n;
+    background-color: burlywood;
+
+}
+
+.item {
     color: white;
     text-decoration: none;
-  }
+}
+
 .active {
-  color: gold;
+    color: gold;
 }
