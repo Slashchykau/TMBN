@@ -2,6 +2,12 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post'
 
 const MyPosts = () => {
+    const postsData = [{id: 1, message: "I'm think that, react it nice framework!", likeCount: '100500'},
+        {id: 1, message: "I'm great. What you think about react?", likeCount: '11'},
+        {id: 1, message: "I'm fine thanks. And you?", likeCount: '13'},
+        {id: 1, message: "How, are you?", likeCount: '10'}];
+    const renderPosts = postsData.map((p) => <Post message={p.message} likeCount={p.likeCount}/>
+    );
     return (
         <div>
             <h2>My posts</h2>
@@ -9,12 +15,7 @@ const MyPosts = () => {
                 <button className={s.btn}>add</button>
             </div>
             <div className={s.posts}>
-                <Post message="I'm think that, react it nice framework!" likeCount='100500'/>
-                <Post message="I'm great. What you think about react?" likeCount='11'/>
-                <Post message="I'm fine thanks. And you?" likeCount='13'/>
-                <Post message="How, are you?" likeCount='10'/>
-
-
+                {renderPosts}
             </div>
         </div>
     )
