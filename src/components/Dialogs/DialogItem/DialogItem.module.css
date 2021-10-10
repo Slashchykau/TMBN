@@ -1,11 +1,28 @@
-.dialogsItems {
-}
+
 
 .dialog {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
     padding: 10px;
+    border: solid #16014c;
+    border-radius: 8px;
 }
 .dialog.active {
-    color: gold;
+    color: #e6d16c;
+    border: solid #16014c;
 }
+.avatarDialog {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+.name {
+    text-decoration: none;
+    color: antiquewhite;
+    font-size: 18px;
+}
+
 
 

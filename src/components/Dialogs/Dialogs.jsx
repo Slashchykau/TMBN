@@ -5,7 +5,7 @@ import Message from "./Message/Message";
 const Dialogs = (p) => {
 
     const renderDialogs = p.state.dialogsData.map((el) =>
-        <DialogItem name={el.name} id={el.id}/>);
+        <DialogItem name={el.name} id={el.id} avatarLink={el.avatarLink}/>);
     const renderMessage = p.state.messageData.map((el) =>
         <Message message={el.message}/>);
     return (

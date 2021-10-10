@@ -5,10 +5,10 @@ const state = {
             {id: 2, message: 'hello'},
             {id: 3, message: 'How are you?'},
             {id: 4, message: 'I am fine thanks!'}],
-        dialogsData: [{id: 1, name: 'Vasa'},
-            {id: 2, name: 'Sveta'},
-            {id: 3, name: 'Galya'},
-            {id: 4, name: 'Arnest'}]
+        dialogsData: [{id: 1, name: 'Vasa',avatarLink:'https://images.pexels.com/photos/4890733/pexels-photo-4890733.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'},
+            {id: 2, name: 'Sveta',avatarLink:'https://images.pexels.com/photos/4662950/pexels-photo-4662950.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'},
+            {id: 3, name: 'Galya',avatarLink:'https://images.pexels.com/photos/4662950/pexels-photo-4662950.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'},
+            {id: 4, name: 'Arnest',avatarLink:'https://images.pexels.com/photos/4890733/pexels-photo-4890733.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}]
     },
 
     profilePage: {
