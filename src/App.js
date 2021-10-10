@@ -16,8 +16,8 @@ const App = (p) => {
                 <Header/>
                 <Nav/>
                 <div className="app-wrapper-content">
-                    <Route exact path='/dialogs' render={() => <Dialogs dialogsData ={p.dialogsData} messageData={p.messageData}/>}/>
-                    <Route exact path='/profile' render={() => <Profile postsData ={p.postsData}/>}/>
+                    <Route exact path='/dialogs' render={() => <Dialogs dialogsData ={p.state.dialogsData} messageData={p.state.messageData}/>}/>
+                    <Route exact path='/profile' render={() => <Profile postsData ={p.state.postsData}/>}/>
                     <Route exact path='/music' render={() => <Music/>}/>
                     <Route exact path='/news' render={() => <News/>}/>
                     <Route exact path='/settings' render={() => <Settings/>}/>
