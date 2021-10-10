@@ -4,9 +4,9 @@ import Message from "./Message/Message";
 
 const Dialogs = (p) => {
 
-    const renderDialogs = p.dialogsData.map((el) =>
+    const renderDialogs = p.state.dialogsData.map((el) =>
         <DialogItem name={el.name} id={el.id}/>);
-    const renderMessage = p.messageData.map((el) =>
+    const renderMessage = p.state.messageData.map((el) =>
         <Message message={el.message}/>);
     return (
         <div className={s.dialogs}>
