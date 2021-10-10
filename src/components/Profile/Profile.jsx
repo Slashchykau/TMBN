@@ -2,12 +2,14 @@ import s from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts'
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = () => {
+
+const Profile = (p) => {
+
     return (
         <div>
 
-            <ProfileInfo/>
-            <MyPosts/>
+            <ProfileInfo />
+            <MyPosts  postsData ={p.postsData}/>
         </div>
     )
 }

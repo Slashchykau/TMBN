@@ -1,12 +1,9 @@
 import s from './MyPosts.module.css';
 import Post from './Post/Post'
 
-const MyPosts = () => {
-    const postsData = [{id: 1, message: "I'm think that, react it nice framework!", likeCount: '100500'},
-        {id: 1, message: "I'm great. What you think about react?", likeCount: '11'},
-        {id: 1, message: "I'm fine thanks. And you?", likeCount: '13'},
-        {id: 1, message: "How, are you?", likeCount: '10'}];
-    const renderPosts = postsData.map((p) => <Post message={p.message} likeCount={p.likeCount}/>
+const MyPosts = (p) => {
+
+    const renderPosts = p.postsData.map((p) => <Post message={p.message} likeCount={p.likeCount}/>
     );
     return (
         <div>
