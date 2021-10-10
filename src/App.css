@@ -9,6 +9,8 @@
     grid-template-rows: 60px 1fr;
     grid-template-columns: 2fr 10fr;
     grid-gap: 10px;
+    background: linear-gradient(3deg, #e6d16c, #16014c);
+
 }
  img {
     width : 100%;
@@ -16,6 +18,6 @@
 }
 .app-wrapper-content {
     grid-area: c;
-    background-color: orange;
+    background: linear-gradient(3deg, #e6d16c, #16014c);
 }
 

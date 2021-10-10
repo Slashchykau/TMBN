@@ -1,17 +1,22 @@
 .navbar {
+    padding-top: 40px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
     grid-area: n;
-    background-color: burlywood;
+    background: linear-gradient(3deg, #e6d16c, #16014c);
 
 }
 
 .item {
+    font-size: 19px;
     color: white;
     text-decoration: none;
 }
 
 .active {
     color: gold;
+}
+.friends {
+    margin-top: 80px;
 }

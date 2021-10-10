@@ -1,11 +1,10 @@
-
-.back {
-    width : 100%;
-    height: 100px;
+.profileInfo {
+    background: url("https://images.pexels.com/photos/3155674/pexels-photo-3155674.jpeg?cs=srgb&dl=pexels-asad-photo-maldives-3155674.jpg&fm=jpg") center center/cover no-repeat;
 }
 .avatar {
-    width: 320px;
-    height: 320px;
+    width: 240px;
+    height: 240px;
+    border-radius: 30px;
 }
 .descriptionBlock {
     padding: 10px;
