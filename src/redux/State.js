@@ -1,4 +1,4 @@
-const state = {
+let state = {
 
     dialogsPage: {
         messageData: [{id: 1, message: 'Hi'},
@@ -23,4 +23,10 @@ const state = {
 
 };
 
+const newPost = (text) => {
+    const news = {id: 1, message: text, likeCount: '100500'};
+    state.profilePage.postsData.push(news);
+    console.log(state.profilePage.postsData)
+}
+export {newPost};
 export default state;

@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {newPost} from "./redux/State";
 import state from "./redux/State";
 ReactDOM.render(
   <React.StrictMode>
-    <App props={state}/>
+    <App props={state} newPost={newPost}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

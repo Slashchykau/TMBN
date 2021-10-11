@@ -7,8 +7,11 @@ const MyPosts = (p) => {
     const renderPosts = p.postsData.map((p) => <Post message={p.message} likeCount={p.likeCount}/>
     );
     const addPost = () => {
+        console.log(p.newPost)
         const text = textArea.current.value;
-        alert(text)
+        p.newPost(text)
+        console.log(text)
+
     };
     const textArea = React.createRef();
 
