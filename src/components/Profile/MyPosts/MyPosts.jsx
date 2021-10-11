@@ -10,7 +10,7 @@ const MyPosts = (p) => {
         console.log(p.newPost)
         const text = textArea.current.value;
         p.newPost(text)
-        console.log(text)
+        textArea.current.value = '';
 
     };
     const textArea = React.createRef();
