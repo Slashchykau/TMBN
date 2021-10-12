@@ -54,27 +54,31 @@ const store = {
 
     },
 
-    newPost()  {
-        const news = {id: 1, message: this._state.profilePage.currentArea, likeCount: '100500'};
-        this._state.profilePage.postsData.push(news);
-        this._state.profilePage.currentArea = '';
 
-        this.rerenderEntireTree(this._state);
-
-    },
     getState() {
         return this._state;
     },
-    changeArea(text)  {
-
-        this._state.profilePage.currentArea = text;
-
-        this.rerenderEntireTree(this._state);
+    _callSubscriber() {
+        alert('render')
     },
-    subscribe(observer)  {
-        this.rerenderEntireTree = observer;
+
+    dispatch(action) {
+        if (action.type === "ADD-POST") {
+                const news = {id: 1, message: this._state.profilePage.currentArea, likeCount: '100500'};
+                this._state.profilePage.postsData.push(news);
+                this._state.profilePage.currentArea = '';
+
+                this._callSubscriber(this.getState());
+
+        } else if (action.type === "CHANGE-AREA") {
+
+                this._state.profilePage.currentArea = action.text;
+                this._callSubscriber(this.getState());
+        }
     },
-    rerenderEntireTree()  {alert('render')}
+    subscribe(observer) {
+        this._callSubscriber = observer;
+    },
 
 }
 window.store = store;

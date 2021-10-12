@@ -7,12 +7,12 @@ const MyPosts = (p) => {
     const renderPosts = p.postsData.map((p) => <Post message={p.message} likeCount={p.likeCount}/>
     );
     const addPost = () => {
-        p.newPost();
+        p.dispatch({type: 'ADD-POST'});
 
     };
     const change = () => {
         const text = textArea.current.value;
-        p.changeArea(text)
+        p.dispatch({type: 'CHANGE-AREA', text: text});
     }
     const textArea = React.createRef();
 
@@ -20,7 +20,7 @@ const MyPosts = (p) => {
         <div>
             <h2>My posts</h2>
             <div className={s.postsWrapper}>
-                <textarea onChange={change} ref={textArea}>{p.currentArea}</textarea>
+                <textarea onChange={change} ref={textArea} value ={p.currentArea} />
                 <button className={s.btn} onClick={addPost}>add
                 </button>
             </div>
