@@ -81,5 +81,13 @@ const store = {
     },
 
 }
+export const  createPostAction = () => {
+    const ADD_POST = 'ADD-POST';
+    return {type: ADD_POST}
+};
+export const  createChangeArea = (text) => {
+    const ADD_AREA = 'CHANGE-AREA';
+    return {type: ADD_AREA, text: text};
+}
 window.store = store;
 export default store;
