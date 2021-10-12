@@ -5,9 +5,9 @@ import React from "react";
 
 const Dialogs = (p) => {
 
-    const renderDialogs = p.state.dialogsData.map((el) =>
+    const renderDialogs = p.dialogsPage.dialogsData.map((el) =>
         <DialogItem name={el.name} id={el.id} avatarLink={el.avatarLink}/>);
-    const renderMessage = p.state.messageData.map((el) =>
+    const renderMessage = p.dialogsPage.messageData.map((el) =>
         <Message message={el.message}/>);
     const addPost = () => {
         const text = messageArea.current.value;

@@ -16,14 +16,14 @@ const App = (p) => {
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-                <Nav state = {p.props.sidebarFriends}/>
+                <Nav state = {p.state.sidebarFriends}/>
                 <div className="app-wrapper-content">
-                    <Route exact path='/dialogs' render={() => <Dialogs state={p.props.dialogsPage} />}/>
-                    <Route exact path='/profile' render={() => <Profile state={p.props.profilePage} newPost={p.newPost}/>}/>
+                    <Route exact path='/dialogs' render={() => <Dialogs dialogsPage={p.state.dialogsPage} />}/>
+                    <Route exact path='/profile' render={() => <Profile profilePage={p.state.profilePage} newPost={p.newPost} changeArea={p.changeArea}/>}/>
                     <Route exact path='/music' render={() => <Music/>}/>
                     <Route exact path='/news' render={() => <News/>}/>
                     <Route exact path='/settings' render={() => <Settings/>}/>
-                    <Route exact path='/friends' render={() => <Friends state = {p.props.sidebarFriends}/>}/>
+                    <Route exact path='/friends' render={() => <Friends state = {p.state.sidebarFriends}/>}/>
 
                 </div>
             </div>

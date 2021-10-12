@@ -4,12 +4,10 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 
 const Profile = (p) => {
-
     return (
         <div className={s.profile}>
-
             <ProfileInfo />
-            <MyPosts  postsData ={p.state.postsData} newPost={p.newPost}/>
+            <MyPosts  postsData ={p.profilePage.postsData} currentArea={p.profilePage.currentArea} newPost={p.newPost} changeArea={p.changeArea} />
         </div>
     )
 }
