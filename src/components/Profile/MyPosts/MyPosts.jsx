@@ -1,7 +1,7 @@
 import s from './MyPosts.module.css';
 import Post from './Post/Post'
 import React from "react";
-import {createChangeArea, createPostAction} from "../../../redux/State";
+import {createChangeArea, createPostAction} from "../../../redux/profile.reducer";
 
 const MyPosts = (p) => {
 
