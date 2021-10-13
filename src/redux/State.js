@@ -1,5 +1,9 @@
 import React from 'react';
 
+const UPDATE_NEW_MASSAGE_AREA = 'UPDATE-NEW-MASSAGE-AREA'
+const NEW_MESSAGE = 'NEW_MESSAGE';
+const ADD_POST = 'NEW-POST';
+const ADD_AREA = 'CHANGE-AREA';
 const store = {
     _state: {
         dialogsPage: {
@@ -26,7 +30,8 @@ const store = {
                     id: 4,
                     name: 'Arnest',
                     avatarLink: 'https://images.pexels.com/photos/4890733/pexels-photo-4890733.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-                }]
+                }],
+            changeMessageArea: ''
         },
 
         profilePage: {
@@ -64,16 +69,24 @@ const store = {
 
     dispatch(action) {
         if (action.type === "ADD-POST") {
-                const news = {id: 1, message: this._state.profilePage.currentArea, likeCount: '100500'};
-                this._state.profilePage.postsData.push(news);
-                this._state.profilePage.currentArea = '';
-
-                this._callSubscriber(this.getState());
+            const news = {id: 1, message: this._state.profilePage.currentArea, likeCount: '100500'};
+            this._state.profilePage.postsData.push(news);
+            this._state.profilePage.currentArea = '';
+            this._callSubscriber(this.getState());
 
         } else if (action.type === "CHANGE-AREA") {
+            this._state.profilePage.currentArea = action.text;
+            this._callSubscriber(this.getState());
 
-                this._state.profilePage.currentArea = action.text;
-                this._callSubscriber(this.getState());
+        } else if (action.type === "UPDATE-NEW-MASSAGE-AREA") {
+            this._state.dialogsPage.changeMessageArea = action.message;
+            this._callSubscriber(this.getState())
+
+        } else if (action.type === "NEW_MESSAGE") {
+             const message = this._state.dialogsPage.changeMessageArea;
+            this._state.dialogsPage.changeMessageArea = '';
+            this._state.dialogsPage.messageData.push({id: 6, message: message})
+            this._callSubscriber(this.getState())
         }
     },
     subscribe(observer) {
@@ -81,13 +94,17 @@ const store = {
     },
 
 }
-export const  createPostAction = () => {
-    const ADD_POST = 'ADD-POST';
+export const createPostAction = () => {
     return {type: ADD_POST}
 };
-export const  createChangeArea = (text) => {
-    const ADD_AREA = 'CHANGE-AREA';
+export const createChangeArea = (text) => {
     return {type: ADD_AREA, text: text};
+}
+export const  updateNewMessageArea = (message) => {
+    return {type: UPDATE_NEW_MASSAGE_AREA, message: message};
+}
+export const  newMessage = () => {
+    return {type: NEW_MESSAGE};
 }
 window.store = store;
 export default store;

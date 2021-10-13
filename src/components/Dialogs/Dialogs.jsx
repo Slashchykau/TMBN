@@ -2,6 +2,7 @@ import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import React from "react";
+import {createChangeArea, createPostAction, newMessage, updateNewMessageArea} from "../../redux/State";
 
 const Dialogs = (p) => {
 
@@ -9,9 +10,16 @@ const Dialogs = (p) => {
         <DialogItem name={el.name} id={el.id} avatarLink={el.avatarLink}/>);
     const renderMessage = p.dialogsPage.messageData.map((el) =>
         <Message message={el.message}/>);
-    const addPost = () => {
+
+    const addMessage = () => {
+        let action = newMessage();
+        p.dispatch(action);
+
+    };
+    const updateArea = () => {
         const text = messageArea.current.value;
-        alert(text)
+        p.dispatch(updateNewMessageArea(text));
+
     };
     const messageArea = React.createRef();
     return (
@@ -20,15 +28,15 @@ const Dialogs = (p) => {
                 {renderDialogs}
             </div>
             <div className={s.messagesWrapper}>
-            <div className={s.messages}>
-                {renderMessage}
+                <div className={s.messages}>
+                    {renderMessage}
+                    <div className={s.addMessage}>
+                        <textarea ref={messageArea} onChange={updateArea} value={p.dialogsPage.changeMessageArea}/>
+                        <button className={s.btn} onClick={addMessage}>Send
+                        </button>
+                    </div>
+                </div>
 
-            </div>
-            <div className={s.addMassage}>
-                <textarea ref={messageArea}></textarea>
-                <button className={s.btn} onClick={addPost}>Send
-                </button>
-            </div>
             </div>
         </div>
     )

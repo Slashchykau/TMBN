@@ -3,16 +3,16 @@
     grid-template-columns: 2fr 10fr;
     grid-gap: 25px
 }
-.messagesWrapper {
-    display: grid;
-    grid-template-rows: 9fr 1fr ;
-}
-.addMassage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/*.messagesWrapper {*/
+/*    display: grid;*/
+/*    grid-template-rows: 9fr 1fr ;*/
+/*}*/
+/*.addMessage {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
 
-}
+/*}*/
 .btn {
     width: 120px;
     height: 40px;
