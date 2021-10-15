@@ -1,5 +1,4 @@
 import './index.css';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -9,21 +8,17 @@ import {BrowserRouter} from "react-router-dom";
 import store from "./redux/redux-store";
 
 
- const rerenderEntireTree =(state) => {
+const rerenderEntireTree = (store) => {
     ReactDOM.render(
-
         <BrowserRouter>
-            <App state={state} dispatch={store.dispatch.bind(store)} />
-
-</BrowserRouter>,
-
+            <App store={store} />
+        </BrowserRouter>,
         document.getElementById('root')
     );
 };
-rerenderEntireTree(store.getState());
-store.subscribe( () => {
-    const state = store.getState()
-    rerenderEntireTree(state);
+rerenderEntireTree(store);
+store.subscribe(() => {
+    return  rerenderEntireTree(store);
 
 })
 // If you want to start measuring performance in your app, pass a function

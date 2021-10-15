@@ -2,7 +2,6 @@ import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import React from "react";
-import {newMessage, updateNewMessageArea} from "../../redux/dialogs.reducer";
 
 const Dialogs = (p) => {
 
@@ -11,15 +10,13 @@ const Dialogs = (p) => {
     const renderMessage = p.dialogsPage.messageData.map((el) =>
         <Message message={el.message}/>);
 
-    const addMessage = () => {
-        let action = newMessage();
-        p.dispatch(action);
+    const onAddMessage = () => {
+        p.addMessage();
 
     };
-    const updateArea = () => {
+    const onUpdateArea = () => {
         const text = messageArea.current.value;
-        p.dispatch(updateNewMessageArea(text));
-
+        p.updateArea(text);
     };
     const messageArea = React.createRef();
     return (
@@ -31,8 +28,8 @@ const Dialogs = (p) => {
                 <div className={s.messages}>
                     {renderMessage}
                     <div className={s.addMessage}>
-                        <textarea ref={messageArea} onChange={updateArea} value={p.dialogsPage.changeMessageArea}/>
-                        <button className={s.btn} onClick={addMessage}>Send
+                        <textarea ref={messageArea} onChange={onUpdateArea} value={p.dialogsPage.changeMessageArea}/>
+                        <button className={s.btn} onClick={onAddMessage}>Send
                         </button>
                     </div>
                 </div>

@@ -1,21 +1,20 @@
 import s from './MyPosts.module.css';
 import Post from './Post/Post'
 import React from "react";
-import {createChangeArea, createPostAction} from "../../../redux/profile.reducer";
+
 
 const MyPosts = (p) => {
 
-    const renderPosts = p.postsData.map((p) => <Post message={p.message} likeCount={p.likeCount}/>
+    const renderPosts = p.profilePage.postsData.map((p) => <Post message={p.message} likeCount={p.likeCount}/>
     );
 
-    const addPost = () => {
-        let action = createPostAction();
-        p.dispatch(action);
+    const onAddPost = () => {
+        p.addPost();
 
     };
-    const change = () => {
+    const onChange = () => {
         const text = textArea.current.value;
-        p.dispatch(createChangeArea(text));
+        p.change(text);
     }
     const textArea = React.createRef();
 
@@ -23,8 +22,8 @@ const MyPosts = (p) => {
         <div>
             <h2>My posts</h2>
             <div className={s.postsWrapper}>
-                <textarea onChange={change} ref={textArea} value={p.currentArea}/>
-                <button className={s.btn} onClick={addPost}>add
+                <textarea onChange={onChange} ref={textArea} value={p.profilePage.currentArea}/>
+                <button className={s.btn} onClick={onAddPost}>add
                 </button>
             </div>
             <div className={s.posts}>

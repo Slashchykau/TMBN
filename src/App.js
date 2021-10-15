@@ -1,14 +1,13 @@
 import './App.css';
-import Profile from './components/Profile/Profile';
 import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
-import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
 import Friends from "./components/Firends/Friends";
-
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import Profile from "./components/Profile/Profile";
 
 const App = (p) => {
 
@@ -16,20 +15,18 @@ const App = (p) => {
         <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
-
-                <Nav state = {p.state.sidebarFriends}/>
+                <Nav state = {p.store.getState().sidebarFriends}/>
                 <div className="app-wrapper-content">
-                    <Route exact path='/dialogs' render={() => <Dialogs dialogsPage={p.state.dialogsPage} dispatch={p.dispatch}/>}/>
-                    <Route exact path='/profile' render={() => <Profile profilePage={p.state.profilePage} dispatch={p.dispatch}/>}/>
+                    <Route exact path='/dialogs' render={() => <DialogsContainer store ={p.store}/>}/>
+                    <Route exact path='/profile' render={() => <Profile store ={p.store}/>}/>
                     <Route exact path='/music' render={() => <Music/>}/>
                     <Route exact path='/news' render={() => <News/>}/>
                     <Route exact path='/settings' render={() => <Settings/>}/>
-                    <Route exact path='/friends' render={() => <Friends state = {p.state.sidebarFriends}/>}/>
-
+                    <Route exact path='/friends' render={() => <Friends state = {p.store.sidebarFriends}/>}/>
                 </div>
             </div>
         </BrowserRouter>
     );
-}
+};
 
 export default App;
