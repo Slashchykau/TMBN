@@ -28,21 +28,21 @@ const initialDialogsState = {
     changeMessageArea: ''
 };
 
-const dialogsReducer = (state =initialDialogsState, action) => {
+const dialogsReducer = (state = initialDialogsState, action) => {
     switch (action.type) {
-        case UPDATE_NEW_MASSAGE_AREA:{
-            const copyState = {...state};
+        case UPDATE_NEW_MASSAGE_AREA:
+            return {
+                ...state,
+                changeMessageArea: action.message
+            };
 
-            copyState.changeMessageArea = action.message;
-            return copyState;}
-        case NEW_MESSAGE: {
-            const copyState = {...state};
-            copyState.messageData = [...state.messageData];
-            const message = copyState.changeMessageArea;
-            copyState.changeMessageArea = '';
-            copyState.messageData.push({id: 6, message: message})
-            return copyState;
-        }
+        case NEW_MESSAGE:
+            const message = state.changeMessageArea;
+            return {
+                ...state,
+                changeMessageArea: '',
+                messageData: [...state.messageData, {id: 6, message: message}]
+            }
         default:
             return state;
     }
