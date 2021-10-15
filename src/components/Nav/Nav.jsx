@@ -1,6 +1,6 @@
 import s from './Nav.module.css';
 import {NavLink} from "react-router-dom";
-import Friends from "../Firends/Friends";
+import Users from "../Users/Users";
 
 const Nav = (p) => {
     return (
@@ -10,10 +10,10 @@ const Nav = (p) => {
             <NavLink className={s.item} to="/news" alt="/news" activeClassName={s.active}>News</NavLink>
             <NavLink className={s.item} to="/music" alt="/music" activeClassName={s.active}>Music</NavLink>
             <NavLink className={s.item} to="/settings" alt="/settings" activeClassName={s.active}>Settings</NavLink>
-            <NavLink className={s.item + ' ' + s.friends} to="/friends" alt="/friends"
-                     activeClassName={s.active}>Friends</NavLink>
+            <NavLink className={s.item + ' ' + s.friends} to="/users" alt="/users"
+                     activeClassName={s.active}>Users</NavLink>
             <div>
-                {/*<Friends state={p.state}/>*/}
+                <Users state={p.state}/>
             </div>
 
 

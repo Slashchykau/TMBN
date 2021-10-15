@@ -5,10 +5,9 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
-import Friends from "./components/Firends/Friends";
+import UsersContainer from "./components/Users/UsersContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import Profile from "./components/Profile/Profile";
-import {connect} from "react-redux";
 
 const App = (p) => {
 
@@ -23,7 +22,7 @@ const App = (p) => {
                         <Route exact path='/music' render={() => <Music/>}/>
                         <Route exact path='/news' render={() => <News/>}/>
                         <Route exact path='/settings' render={() => <Settings/>}/>
-                        <Route exact path='/friends' render={() => <Friends />}/>
+                        <Route exact path='/friends' render={() => <UsersContainer />}/>
                     </div>
                 </div>
             </BrowserRouter>

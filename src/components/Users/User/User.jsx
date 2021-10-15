@@ -1,5 +1,5 @@
-import s from './Friend.module.css';
-const Friend = (p) => {
+import s from './User.module.css';
+const User = (p) => {
 
   return (
       <div className={s.user}>
@@ -7,4 +7,4 @@ const Friend = (p) => {
           <div className={s.name}>{p.name} </div></div>
   )
 }
-export default Friend;
+export default User;
