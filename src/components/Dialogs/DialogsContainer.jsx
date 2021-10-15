@@ -1,19 +1,29 @@
-
 import React from "react";
 import {newMessage, updateNewMessageArea} from "../../redux/dialogs.reducer";
 import Dialogs from "./Dialogs";
-
-const DialogsContainer = (p) => {
-    const state = p.store.getState();
-    const addMessage = () => {
-        p.store.dispatch(newMessage());
-    };
-
-    const updateArea = (text) => {
-        p.store.dispatch(updateNewMessageArea(text));
-    };
+import {connect} from "react-redux";
 
 
-    return (<Dialogs updateArea={updateArea} addMessage={addMessage} dialogsPage = {state.dialogsPage}/>);
+
+const mapStateToProps = (state) => {
+
+    return  {dialogsPage : state.dialogsPage} ;
+
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addMessage : () => {
+            dispatch(newMessage());
+        },
+        updateArea : (text) => {
+
+            dispatch(updateNewMessageArea(text));
+        }
+    }
+
 }
+
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 export default DialogsContainer;
