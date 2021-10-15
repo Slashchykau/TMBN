@@ -30,14 +30,18 @@ const initialDialogsState = {
 
 const dialogsReducer = (state =initialDialogsState, action) => {
     switch (action.type) {
-        case UPDATE_NEW_MASSAGE_AREA:
-            state.changeMessageArea = action.message;
-            return state;
+        case UPDATE_NEW_MASSAGE_AREA:{
+            const copyState = {...state};
+
+            copyState.changeMessageArea = action.message;
+            return copyState;}
         case NEW_MESSAGE: {
-            const message = state.changeMessageArea;
-            state.changeMessageArea = '';
-            state.messageData.push({id: 6, message: message})
-            return state;
+            const copyState = {...state};
+            copyState.messageData = [...state.messageData];
+            const message = copyState.changeMessageArea;
+            copyState.changeMessageArea = '';
+            copyState.messageData.push({id: 6, message: message})
+            return copyState;
         }
         default:
             return state;
