@@ -1,16 +1,18 @@
-
+import React from "react";
 import {connect} from "react-redux";
-
 import Users from "./Users";
-import {setUsersAC, toggleFloow} from "../../redux/users.reducer";
+import {setUsersAC, toggleFollowAC} from "../../redux/users.reducer";
 
 const mapStateToProps = (state) => {
-    return {state: state.users}
+
+    return {
+        users: state.usersPage.users}
+
 }
 const mapDispatchToProps = (dispatch) => {
 return {
     toggleFollow:(userId) => {
-        dispatch(toggleFloow(userId))
+        dispatch(toggleFollowAC(userId))
     },
     setUsers: (users) => {
         dispatch(setUsersAC(users))

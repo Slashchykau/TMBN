@@ -13,7 +13,7 @@ const Nav = (p) => {
             <NavLink className={s.item + ' ' + s.friends} to="/users" alt="/users"
                      activeClassName={s.active}>Users</NavLink>
             <div>
-                <Users state={p.state}/>
+
             </div>
 
 

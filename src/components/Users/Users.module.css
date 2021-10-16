@@ -1,8 +1,5 @@
 
-.friends {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    padding-top: 33px;
+.avatar {
+    width: 240px;
+    height: 320px;
 }

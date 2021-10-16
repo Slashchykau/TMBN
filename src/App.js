@@ -22,7 +22,7 @@ const App = (p) => {
                         <Route exact path='/music' render={() => <Music/>}/>
                         <Route exact path='/news' render={() => <News/>}/>
                         <Route exact path='/settings' render={() => <Settings/>}/>
-                        <Route exact path='/friends' render={() => <UsersContainer />}/>
+                        <Route exact path='/users' render={() => <UsersContainer />}/>
                     </div>
                 </div>
             </BrowserRouter>

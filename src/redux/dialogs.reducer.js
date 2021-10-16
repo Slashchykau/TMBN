@@ -1,5 +1,6 @@
 const UPDATE_NEW_MASSAGE_AREA = 'UPDATE-NEW-MASSAGE-AREA'
 const NEW_MESSAGE = 'NEW_MESSAGE';
+
 const initialDialogsState = {
     messageData: [{id: 1, message: 'Hi'},
         {id: 2, message: 'hello'},
