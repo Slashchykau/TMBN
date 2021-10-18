@@ -1,28 +1,40 @@
 import React from "react";
 import s from './Users.module.css'
+import * as axios from "axios";
+import userAvatar from '../../assets/img/users/png-transparent-computer-icons-anonymous-anonymity-anonymous-face-monochrome-head.png'
+
+class Users extends React.Component {
+
+    constructor(props) {
+        super(props);
+        if (this.props.users.length === 0) {
+            axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+                    this.props.setUsers([...response.data.items])
+                }
+            )}
+    }
 
 
+    render() {
+        return (
 
-const Users = (p) => {
-debugger;
-
-
-  return (
-      <div >
-        {p.users.map(u => <div key={u.id}>
+            <div>
+                {this.props.users.map(u => <div key={u.id}>
           <span>
-            <div><img className={s.avatar} src={u.photoURL} alt="avatar"/></div>
-              { u.followed ? <button onClick={()=> p.toggleFollow(u.id)}>Unfollow</button> : <button onClick={()=> p.toggleFollow(u.id)} >Follow</button>
+            <div><img className={s.avatar} src={u.photoURL? u.photoURL: userAvatar} alt="avatar"/></div>
+              {u.followed ? <button onClick={() => this.props.toggleFollow(u.id)}>Unfollow</button> :
+                  <button onClick={() => this.props.toggleFollow(u.id)}>Follow</button>
               }
           </span>
-          <span>
-            <span><div>{u.fullName}</div><div>{u.status}</div></span>
-            <span><div>{u.location.city}</div><div>{u.location.country}</div></span>
+                        <span>
+            <span><div>{u.name}</div><div>{u.status}</div></span>
+                            {/*<span><div>{u.location.city}</div><div>{u.location.country}</div></span>*/}
           </span>
+                    </div>
+                )}
             </div>
-        )}
-      </div>
 
-  )
+        )
+    }
 }
 export default Users;
