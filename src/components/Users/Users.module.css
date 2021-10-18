@@ -3,3 +3,7 @@
     width: 90px;
     height: 90px;
 }
+.current {
+    font-weight:bold;
+    color: whitesmoke;
+}
