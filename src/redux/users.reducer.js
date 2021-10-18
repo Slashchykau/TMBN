@@ -12,7 +12,7 @@ const initialUsersState = {
     ],
     pageSize: 5,
     totalUsersCount: 5,
-    currentPage: 3
+    currentPage: 1
 
 };
 
