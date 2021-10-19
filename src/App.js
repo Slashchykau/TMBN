@@ -1,5 +1,5 @@
 import './App.css';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Nav from './components/Nav/Nav';
 import {BrowserRouter, Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
@@ -15,7 +15,7 @@ const App = (p) => {
         return (
             <BrowserRouter>
                 <div className="app-wrapper">
-                    <Header/>
+                    <HeaderContainer/>
                     <Nav />
                     <div className="app-wrapper-content">
                         <Route path='/dialogs' render={() => <DialogsContainer/>}/>

@@ -6,3 +6,9 @@
 .header img{
   width: 20px
 }
+.loginForm  {
+  float: right;
+}
+.loginForm a {
+  color: white;
+}
