@@ -2,6 +2,7 @@ import React from "react";
 import MyPosts from "./MyPosts";
 import {createChangeArea, createPostAction} from "../../../redux/profile.reducer";
 import {connect} from "react-redux";
+import {withRouter} from "react-router-dom";
 
 const mapStateToProps = (state) => {
     return {profilePage : state.profilePage}
@@ -16,6 +17,5 @@ const mapDispatchToProps = (dispatch) => {
         dispatch(createChangeArea(text));
     }}
 }
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
 
-export default MyPostsContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(MyPosts);;
