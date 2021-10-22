@@ -1,4 +1,5 @@
 import dialogsReducer from "./dialogs.reducer";
+import {UsersApi} from "../components/Api/Api";
 
 const ADD_POST = 'NEW_POST';
 const CHANGE_AREA = 'CHANGE_AREA';
@@ -43,4 +44,8 @@ export const createChangeArea = (text) => {
 export const setUserProfile = (profile) => {
     return {type: SET_USER_PROFILE, profile};
 }
+export const getUserProfile = (userId) => (dispatch) => {
+    UsersApi.getProfile(userId).then(response => {
+        dispatch(setUserProfile(response.data))
+})}
 export default profileReducer;

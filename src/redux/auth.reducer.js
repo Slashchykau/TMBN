@@ -1,4 +1,6 @@
 import dialogsReducer from "./dialogs.reducer";
+import * as axios from "axios";
+import {AuthApi} from "../components/Api/Api";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 
@@ -15,7 +17,6 @@ const initialProfileState = {
 const authReducer = (state = initialProfileState, action) => {
     switch (action.type) {
         case SET_USER_DATA:
-            const news = {id: 1, message: state.currentArea, likeCount: '100500'};
             return {...state,
               ...action.data,
                 isAuth:true
@@ -23,7 +24,15 @@ const authReducer = (state = initialProfileState, action) => {
         default: return state;
     }
 }
-export const setAuthUserData = (data) => {
+ const setAuthUserData = (data) => {
     return {type: SET_USER_DATA,data}
 };
+export const getLoginData = () =>  (dispatch) => {
+    AuthApi.me().then(response => {
+        if(response.data.resultCode === 0) {
+            dispatch(setAuthUserData(response.data.data))
+        }
+    })
+}
+
 export default authReducer;
