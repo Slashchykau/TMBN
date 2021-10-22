@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import * as axios from "axios";
 
 
+
 const Users = (props) => {
     const pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
     let pages = [];
@@ -25,35 +26,12 @@ const Users = (props) => {
 
                 <NavLink to={'/profile/' + u.id} ><img className={s.avatar} src={u.photos.small} alt="avatar"/></NavLink>
             </div>
-              {u.followed ? <button onClick={() => {
-                      axios.delete(`https://social-network.samuraijs.com/api/1.0//follow/${u.id}`,{
-                          withCredentials: true,
-                          headers: {
-                              'API-KEY':  '97b7a772-1328-454b-bbe0-9a0b8deec16c'
-                          }
-                      }).then(response => {
-                          console.log(response)
-                          if(response.data.resultCode === 0) {
-                              props.toggleFollow(u.id);
-                          }
-                      })
+               <button disabled={props.followingProgress.some(id => id ===u.id)} onClick={() => {
+                    props.follow(u.followed,u.id)
                   }
-              }>Unfollow</button> :
-                  <button onClick={() => {
-                      axios.post(`https://social-network.samuraijs.com/api/1.0//follow/${u.id}`,{},{
-                          withCredentials: true,
-                          headers: {
-                            'API-KEY':  '97b7a772-1328-454b-bbe0-9a0b8deec16c'
-                          }
-                      }).then(response => {
-                          if(response.data.resultCode === 0) {
-                              props.toggleFollow(u.id);
-                          }
-                      })
-                  }
+              }>{u.followed ? 'follow' : 'unfollow' }</button>
 
-                  }>Follow</button>
-              }
+
           </span>
                         <span>
             <span><div>{u.name}</div><div>{u.status}</div></span>
