@@ -2,6 +2,7 @@ import s from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
 import React from "react";
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 const ProfileInfo = (props) => {
     if(!props.profile) {
         return <Preloader/>
@@ -11,6 +12,7 @@ const ProfileInfo = (props) => {
             <span> {props.profile.fullName}</span>
                 <img  className={s.avatar}  src={props.profile.photos.large} alt='avatar' />
             <div>Work status: {props.profile.lookingForAJobDescription} </div>
+            <ProfileStatus/>
             <div className={s.descriptionBlock}>{props.profile.aboutMe}</div>
             <div className={s.social}> <div> My social:
                 <div><a src={props.profile.contacts.facebook}>facebook</a></div>
