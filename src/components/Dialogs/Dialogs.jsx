@@ -2,21 +2,22 @@ import s from './Dialogs.module.css'
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import React from "react";
+import {Redirect} from "react-router-dom";
 
-const Dialogs = (p) => {
+const Dialogs = (props) => {
 
-    const renderDialogs = p.dialogsPage.dialogsData.map((el) =>
+    const renderDialogs = props.dialogsPage.dialogsData.map((el) =>
         <DialogItem name={el.name} id={el.id} avatarLink={el.avatarLink}/>);
-    const renderMessage = p.dialogsPage.messageData.map((el) =>
+    const renderMessage = props.dialogsPage.messageData.map((el) =>
         <Message message={el.message}/>);
 
     const onAddMessage = () => {
-        p.addMessage();
+        props.addMessage();
 
     };
     const onUpdateArea = () => {
         const text = messageArea.current.value;
-        p.updateArea(text);
+        props.updateArea(text);
     };
     const messageArea = React.createRef();
     return (
@@ -28,7 +29,7 @@ const Dialogs = (p) => {
                 <div className={s.messages}>
                     {renderMessage}
                     <div className={s.addMessage}>
-                        <textarea ref={messageArea} onChange={onUpdateArea} value={p.dialogsPage.changeMessageArea}/>
+                        <textarea ref={messageArea} onChange={onUpdateArea} value={props.dialogsPage.changeMessageArea}/>
                         <button className={s.btn} onClick={onAddMessage}>Send
                         </button>
                     </div>

@@ -5,6 +5,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
+import Login from "./components/Login/Login";
 import UsersContainer from "./components/Users/UsersContainer";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
@@ -24,6 +25,7 @@ const App = (p) => {
                         <Route path='/news' render={() => <News/>}/>
                         <Route path='/settings' render={() => <Settings/>}/>
                         <Route path='/users' render={() => <UsersContainer />}/>
+                        <Route path='/login' render={() => <Login/>}/>
                     </div>
                 </div>
             </BrowserRouter>

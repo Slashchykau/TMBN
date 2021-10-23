@@ -11,8 +11,8 @@ import {
 } from "../../redux/users.reducer";
 
 import Preloader from "../Common/Preloader/Preloader";
+import WithAuthRedirect from "../Hoc/WithAithRedirect";
 
-import {UsersApi} from "../Api/Api";
 
 
 class UsersContainer extends React.Component {
@@ -28,16 +28,13 @@ class UsersContainer extends React.Component {
     render() {
         return (
             <> {this.props.isFetching ? <Preloader/>: null}
-            <Users totalUsersCount = {this.props.totalUsersCount} pageSize ={this.props.pageSize}
-                   onPageCanged={this.onPageCanged } users={this.props.users} currentPage = {this.props.currentPage}
-                   follow={ this.props.follow} postDelFollow = {UsersApi.postDelFollow}
-                   setToggleFollowingProgress={ this.props.setToggleFollowingProgress}
-                   followingProgress={this.props.followingProgress}
+            <Users {...this.props } onPageCanged =  {this.onPageCanged}
             />
                 </>
         )
     }
 }
+let AuthRedirectComponent = WithAuthRedirect(UsersContainer)
 
 const mapStateToProps = (state) => {
 
@@ -53,5 +50,5 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps, {follow, setUsers, setCurrent, setTotalCount,
-    setToggleFetching, setToggleFollowingProgress, getUsers})(UsersContainer)
+    setToggleFetching, setToggleFollowingProgress, getUsers})(AuthRedirectComponent)
 
