@@ -4,15 +4,16 @@ import {NavLink} from "react-router-dom";
 import React from "react";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 const ProfileInfo = (props) => {
+
     if(!props.profile) {
         return <Preloader/>
     }
     return (
         <div className={s.profileInfo}>
-            <span> {props.profile.fullName}</span>
+            <span> {props.status}</span>
                 <img  className={s.avatar}  src={props.profile.photos.large} alt='avatar' />
             <div>Work status: {props.profile.lookingForAJobDescription} </div>
-            <ProfileStatus/>
+            <ProfileStatus profile={props.profile} status={props.status} upUserStatus={props.upUserStatus}/>
             <div className={s.descriptionBlock}>{props.profile.aboutMe}</div>
             <div className={s.social}> <div> My social:
                 <div><a src={props.profile.contacts.facebook}>facebook</a></div>
