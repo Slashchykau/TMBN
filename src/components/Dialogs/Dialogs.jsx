@@ -4,12 +4,19 @@ import Message from "./Message/Message";
 import React from "react";
 import Field from "redux-form/lib/Field";
 import reduxForm from "redux-form/lib/immutable/reduxForm";
+import {Template} from "../Common/FormsControl/FormsControl";
+import {maxLengthCreator, required} from "../../utils/validators/validator";
 
+let maxLength50 = maxLengthCreator(50);
+
+const Textarea = Template('textarea')
 let DialogsForm = (props) => {
     return (
 
             <form onSubmit={props.handleSubmit}>
-                <Field component="textarea" name={'newMessageBody'} type="text" placeholder='message...'></Field>
+                <Field component={Textarea} name={'newMessageBody'} type="text" placeholder='message...'
+                    validate={[required,maxLength50]}
+                ></Field>
                 <button>Submit</button>
             </form>
 
