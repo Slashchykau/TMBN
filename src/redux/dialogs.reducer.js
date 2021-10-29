@@ -26,22 +26,16 @@ const initialDialogsState = {
             name: 'Arnest',
             avatarLink: 'https://images.pexels.com/photos/4890733/pexels-photo-4890733.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
         }],
-    changeMessageArea: ''
 };
 
 const dialogsReducer = (state = initialDialogsState, action) => {
     switch (action.type) {
-        case UPDATE_NEW_MASSAGE_AREA:
-            return {
-                ...state,
-                changeMessageArea: action.message
-            };
+
 
         case NEW_MESSAGE:
-            const message = state.changeMessageArea;
+            const message = action.newMessageBody;
             return {
                 ...state,
-                changeMessageArea: '',
                 messageData: [...state.messageData, {id: 6, message: message}]
             }
         default:
@@ -49,10 +43,7 @@ const dialogsReducer = (state = initialDialogsState, action) => {
     }
 }
 
-export const updateNewMessageArea = (message) => {
-    return {type: UPDATE_NEW_MASSAGE_AREA, message: message};
-}
-export const newMessage = () => {
-    return {type: NEW_MESSAGE};
+export const newMessage = (newMessageBody) => {
+    return {type: NEW_MESSAGE, newMessageBody};
 }
 export default dialogsReducer;

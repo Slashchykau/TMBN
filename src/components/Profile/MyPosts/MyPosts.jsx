@@ -1,30 +1,34 @@
 import s from './MyPosts.module.css';
 import Post from './Post/Post'
 import React from "react";
+import Field from "redux-form/lib/Field";
+import reduxForm from "redux-form/lib/immutable/reduxForm";
 
 
-const MyPosts = (p) => {
+let PostForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field component="textarea" name={'newPost'} type="text" placeholder='New post...'></Field>
+            <button>add</button>
+        </form>
+    )
+}
+PostForm = reduxForm({form: 'newPost'})(PostForm);
 
-    const renderPosts = p.profilePage.postsData.map((p) => <Post message={p.message} likeCount={p.likeCount}/>
+const MyPosts = (props) => {
+
+    const renderPosts = props.profilePage.postsData.map((props) => <Post message={props.message} likeCount={props.likeCount}/>
     );
 
-    const onAddPost = () => {
-        p.addPost();
 
-    };
-    const onChange = () => {
-        const text = textArea.current.value;
-        p.change(text);
+    const onSubmit = (value) => {
+        props.addPost(value.newPost);
     }
-    const textArea = React.createRef();
-
     return (
         <div>
             <h2>My posts</h2>
             <div className={s.postsWrapper}>
-                <textarea onChange={onChange} ref={textArea} value={p.profilePage.currentArea}/>
-                <button className={s.btn} onClick={onAddPost}>add
-                </button>
+                <PostForm onSubmit={onSubmit}/>
             </div>
             <div className={s.posts}>
                 {renderPosts}

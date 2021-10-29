@@ -9,13 +9,10 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return{
-    addPost: () => {
-        dispatch(createPostAction());
+    addPost: (newPost) => {
+        dispatch(createPostAction(newPost));
 
-    },
-        change: (text) => {
-        dispatch(createChangeArea(text));
     }}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MyPosts);;
+export default connect(mapStateToProps, mapDispatchToProps)(MyPosts);

@@ -17,13 +17,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addMessage : () => {
-            dispatch(newMessage());
+        addMessage : (newMessageBody) => {
+            dispatch(newMessage(newMessageBody));
         },
-        updateArea : (text) => {
-
-            dispatch(updateNewMessageArea(text));
-        }
     }
 
 }
