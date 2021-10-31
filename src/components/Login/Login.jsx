@@ -6,7 +6,7 @@ import {maxLengthCreator, required} from "../../utils/validators/validator";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth.reducer";
 import {Redirect} from "react-router-dom";
-
+import s from '../Common/FormsControl/FormsControl.module.css'
 
 const Input = Template('input')
 
@@ -19,13 +19,14 @@ let LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
 
-            <div>
+            <div className={props.error ? s.formsControl + ' ' +s.error : '' }>
                 <div><Field component={Input} name={'email'} type="text" placeholder='login'
                             validate={[required, maxLength20]}/></div>
                 <div><Field component={Input} name={'password'} type="password" placeholder='password'
                             validate={[required, maxLength10]}/></div>
                 <div><Field component={Input} name={'rememberMe'} type="checkbox"
                             validate={[]}/></div>
+                {props.error && <div>{props.error}</div>}
                 <button>login</button>
             </div>
         </form>

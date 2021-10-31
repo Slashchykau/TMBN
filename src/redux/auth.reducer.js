@@ -1,6 +1,7 @@
 import dialogsReducer from "./dialogs.reducer";
 import * as axios from "axios";
 import {AuthApi} from "../components/Api/Api";
+import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 
@@ -27,27 +28,26 @@ const authReducer = (state = initialProfileState, action) => {
  const setAuthUserData = (userId,login,email,isAuth) => ( {type: SET_USER_DATA, payload:{userId,login,email,isAuth}})
 
 export const getLoginData = () =>  (dispatch) => {
-    AuthApi.me().then(response => {
+   return  AuthApi.me().then(response => {
         if(response.data.resultCode === 0) {
             let {userId,login,email} = response.data.data
             dispatch(setAuthUserData(userId,login,email,true))
-
         }
     })
 }
 
 export const login = (email, password, rememberMe) =>  (dispatch) => {
     AuthApi.login(email, password, rememberMe).then(response => {
-        console.log('полученны данные' ,{response})
+
         if(response.data.resultCode === 0) {
             dispatch(getLoginData())
-
-
-
+        } else {
+            const message = response.data.messages.length > 0 ? response.data.messages[0] : 'some error'
+            dispatch(stopSubmit('Login',{_error: message}))
         }
     })
 }
-export const logout = (email, password, rememberMe) =>  (dispatch) => {
+export const logout = () =>  (dispatch) => {
     AuthApi.logout().then(response => {
         if(response.data.resultCode === 0) {
             dispatch(setAuthUserData(null,null,null,false))
