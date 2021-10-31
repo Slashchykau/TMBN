@@ -25,7 +25,9 @@ const appReducer = (state = initialProfileState, action) => {
 
 export const initializeApp = () =>  (dispatch) => {
     const response = dispatch(getLoginData())
-    response.then(()=> ( dispatch(initializeSuccess())))
+    response.then(() => {
+        dispatch(initializeSuccess())
+    })
 }
 
 export default appReducer;

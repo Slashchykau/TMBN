@@ -5,8 +5,6 @@ import {stopSubmit} from "redux-form";
 
 const SET_USER_DATA = 'SET_USER_DATA';
 
-const ADD_POST = 'NEW_POST';
-
 const initialProfileState = {
     userId: null,
     login: null,

@@ -46,4 +46,4 @@ class App extends Component {
 const mapStateToProps = (state) => ({
      initialized: state.app.initialized
 })
-export default compose(connect(mapStateToProps,{initializeApp}), withRouter )(App);
+export default compose(withRouter, connect(mapStateToProps,{initializeApp})  )(App);
