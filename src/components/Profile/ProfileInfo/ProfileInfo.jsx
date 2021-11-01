@@ -3,6 +3,7 @@ import Preloader from "../../Common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
 import React from "react";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 const ProfileInfo = (props) => {
 
     if(!props.profile) {
@@ -13,7 +14,7 @@ const ProfileInfo = (props) => {
             <span> {props.status}</span>
                 <img  className={s.avatar}  src={props.profile.photos.large} alt='avatar' />
             <div>Work status: {props.profile.lookingForAJobDescription} </div>
-            <ProfileStatus profile={props.profile} status={props.status} upUserStatus={props.upUserStatus}/>
+            <ProfileStatusWithHooks profile={props.profile} status={props.status} upUserStatus={props.upUserStatus}/>
             <div className={s.descriptionBlock}>{props.profile.aboutMe}</div>
             <div className={s.social}> <div> My social:
                 <div><a src={props.profile.contacts.facebook}>facebook</a></div>

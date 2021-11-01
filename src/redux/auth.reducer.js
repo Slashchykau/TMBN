@@ -14,7 +14,7 @@ const initialProfileState = {
 
 
 const authReducer = (state = initialProfileState, action) => {
-
+debugger;
     switch (action.type) {
         case SET_USER_DATA:
             return {...state,
@@ -28,8 +28,10 @@ const authReducer = (state = initialProfileState, action) => {
 export const getLoginData = () =>  (dispatch) => {
    return  AuthApi.me().then(response => {
         if(response.data.resultCode === 0) {
-            let {userId,login,email} = response.data.data
-            dispatch(setAuthUserData(userId,login,email,true))
+            let {id,login,email} = response.data.data
+
+            dispatch(setAuthUserData(id,login,email,true))
+
         }
     })
 }
@@ -39,6 +41,8 @@ export const login = (email, password, rememberMe) =>  (dispatch) => {
 
         if(response.data.resultCode === 0) {
             dispatch(getLoginData())
+
+
         } else {
             const message = response.data.messages.length > 0 ? response.data.messages[0] : 'some error'
             dispatch(stopSubmit('Login',{_error: message}))

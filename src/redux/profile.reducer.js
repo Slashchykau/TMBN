@@ -50,6 +50,7 @@ export const createPostAction = (newPost) => {
 export const setUserProfile = (profile) => {
     return {type: SET_USER_PROFILE, profile};
 }
+
 export const setUserStatus = (status) => {
 
     return {type: SET_STATUS, status};
