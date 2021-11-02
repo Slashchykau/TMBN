@@ -20,7 +20,6 @@ let PostForm = (props) => {
 PostForm = reduxForm({form: 'newPost'})(PostForm);
 
 const MyPosts = React.memo((props) => {
-console.log('aaa')
     const renderPosts = props.postsData.map((props) => <Post message={props.message} likeCount={props.likeCount}/>
     );
 

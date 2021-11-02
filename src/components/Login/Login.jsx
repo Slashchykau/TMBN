@@ -1,7 +1,7 @@
 import React from "react";
 import reduxForm from "redux-form/lib/immutable/reduxForm";
 import Field from "redux-form/lib/Field";
-import {Template} from "../Common/FormsControl/FormsControl";
+import {createField, Template} from "../Common/FormsControl/FormsControl";
 import {maxLengthCreator, required} from "../../utils/validators/validator";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth.reducer";
@@ -14,19 +14,19 @@ let maxLength20 = maxLengthCreator(20);
 let maxLength10 = maxLengthCreator(10);
 
 
-let LoginForm = (props) => {
+let LoginForm = ({handleSubmit, error}) => {
 
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
-            <div className={props.error ? s.formsControl + ' ' +s.error : '' }>
-                <div><Field component={Input} name={'email'} type="text" placeholder='login'
-                            validate={[required, maxLength20]}/></div>
-                <div><Field component={Input} name={'password'} type="password" placeholder='password'
-                            validate={[required, maxLength10]}/></div>
-                <div><Field component={Input} name={'rememberMe'} type="checkbox"
-                            validate={[]}/></div>
-                {props.error && <div>{props.error}</div>}
+            <div className={error ? s.formsControl + ' ' + s.error : ''}>
+
+                <div>{createField(Input, 'email', "text", 'login', [required, maxLength20])}</div>
+
+                <div>  {createField(Input, 'password', "password", 'password', [required, maxLength10])} </div>
+
+                <div>{createField(Input, 'rememberMe', "checkbox", 'checkbox', [],'remember me')}</div>
+                {error && <div>{error}</div>}
                 <button>login</button>
             </div>
         </form>
@@ -36,12 +36,12 @@ let LoginForm = (props) => {
 LoginForm = reduxForm({form: 'Login'})(LoginForm)
 
 
-const Login = (props) => {
+const Login = ({login, isAuth}) => {
     const onSubmit = (dataFrom) => {
-        debugger;
-        props.login(dataFrom.email, dataFrom.password, dataFrom.rememberMe)
+
+        login(dataFrom.email, dataFrom.password, dataFrom.rememberMe)
     }
-    if(props.isAuth) {
+    if (isAuth) {
 
         return <Redirect to={'/profile'}/>
     }

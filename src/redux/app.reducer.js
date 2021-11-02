@@ -18,16 +18,19 @@ const appReducer = (state = initialProfileState, action) => {
             return {...state,
                 initialized:true
             }
+
         default: return state;
     }
 }
  const initializeSuccess = () => ( {type: INITIALIZED_SUCCESS})
 
-export const initializeApp = () =>  (dispatch) => {
-    const response = dispatch(getLoginData())
-    response.then(() => {
-        dispatch(initializeSuccess())
-    })
+export const initializeApp = () => async (dispatch) => {
+
+    await dispatch(getLoginData());
+    dispatch(initializeSuccess());
+
+
+
 }
 
 export default appReducer;

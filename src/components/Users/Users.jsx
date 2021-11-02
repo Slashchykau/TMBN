@@ -26,8 +26,8 @@ const Users = (props) => {
 
                 <NavLink to={'/profile/' + u.id} ><img className={s.avatar} src={u.photos.small} alt="avatar"/></NavLink>
             </div>
-               <button disabled={props.followingProgress.some(id => id ===u.id)} onClick={() => {
-                    props.follow(u.followed,u.id)
+               <button disabled={props.followingProgress.some(id => id === u.id)} onClick={() => {
+                    props.followUnfollowFlow(u.followed,u.id)
                   }
               }>{u.followed ? 'follow' : 'unfollow' }</button>
 

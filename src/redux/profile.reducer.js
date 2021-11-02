@@ -1,4 +1,3 @@
-
 import {ProfileApi, UsersApi} from "../components/Api/Api";
 
 const ADD_POST = 'NEW_POST';
@@ -65,21 +64,21 @@ export const setUserStatus = (status) => {
     return {type: SET_STATUS, status};
 }
 
-export const getUserProfile = (userId) => (dispatch) => {
-    UsersApi.getProfile(userId).then(response => {
-        dispatch(setUserProfile(response.data))
-    })
+export const getUserProfile = (userId) => async (dispatch) => {
+    const response = await UsersApi.getProfile(userId)
+    dispatch(setUserProfile(response.data))
+
 }
-export const getUserStatus = (userId) => (dispatch) => {
-    ProfileApi.getStatus(userId).then(response => {
-        dispatch(setUserStatus(response.data))
-    })
+export const getUserStatus = (userId) => async (dispatch) => {
+    const response = await ProfileApi.getStatus(userId)
+    dispatch(setUserStatus(response.data))
+
 }
-export const upUserStatus = (message) => (dispatch) => {
-    ProfileApi.upStatus(message).then(response => {
-        if(response.statusCode === 0){
-            dispatch(setUserStatus(response.messages))
-        }
-    })
+export const upUserStatus = (message) => async (dispatch) => {
+    const response = await ProfileApi.upStatus(message)
+    if (response.statusCode === 0) {
+        dispatch(setUserStatus(response.messages))
+    }
+
 }
 export default profileReducer;

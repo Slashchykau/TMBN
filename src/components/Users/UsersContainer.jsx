@@ -7,7 +7,7 @@ import {
     setToggleFetching, setToggleFollowingProgress,
     setTotalCount,
     setUsers,
-    follow
+     followUnfollowFlow
 } from "../../redux/users.reducer";
 
 import Preloader from "../Common/Preloader/Preloader";
@@ -56,7 +56,7 @@ const mapStateToProps = (state) => {
 }
 
 
-export default compose (connect(mapStateToProps, {follow, setUsers, setCurrent, setTotalCount,
+export default compose (connect(mapStateToProps, {followUnfollowFlow, setUsers, setCurrent, setTotalCount,
     setToggleFetching, setToggleFollowingProgress, getUsersData}),
         WithAuthRedirect
 )(UsersContainer)
