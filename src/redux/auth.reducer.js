@@ -14,7 +14,7 @@ const initialProfileState = {
 
 
 const authReducer = (state = initialProfileState, action) => {
-debugger;
+
     switch (action.type) {
         case SET_USER_DATA:
             return {...state,

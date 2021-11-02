@@ -5,7 +5,9 @@ import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 
 const mapStateToProps = (state) => {
-    return {profilePage : state.profilePage}
+    return {postsData : state.profilePage.postsData,
+
+    }
 }
 const mapDispatchToProps = (dispatch) => {
     return{
